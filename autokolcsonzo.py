@@ -54,28 +54,28 @@ class Autokolcsonzo:
     def berles_hozzaadas(self, rendszam, datum):
         auto = self._keres_auto(rendszam)
         if not auto:
-            print("❌ Nem található ilyen rendszámú autó.")
+            print(" Nem található ilyen rendszámú autó.")
             return
         if auto.foglalt:
-            print("❌ Az autó már foglalt.")
+            print(" Az autó már foglalt.")
             return
         berles = Berles(auto, datum)
         auto.foglalt = True
         self.berlesek.append(berles)
-        print(f"✅ Sikeres bérlés! Ár: {berles.ar()}Ft")
+        print(f" Sikeres bérlés! Ár: {berles.ar()}Ft")
 
     def berles_lemondas(self, rendszam):
         for berles in self.berlesek:
             if berles.auto.rendszam == rendszam:
                 berles.auto.foglalt = False
                 self.berlesek.remove(berles)
-                print(f"✅ A(z) {rendszam} rendszámú autó bérlése törölve.")
+                print(f" A(z) {rendszam} rendszámú autó bérlése törölve.")
                 return
-        print("❌ Nem található ilyen bérlés.")
+        print(" Nem található ilyen bérlés.")
 
     def listaz_berlesek(self):
         if not self.berlesek:
-            print("ℹ️ Nincs aktív bérlés.")
+            print(" Nincs aktív bérlés.")
         for berles in self.berlesek:
             print(berles)
 
@@ -139,7 +139,7 @@ def menu(kolcsonzo):
             print("Kilépés...")
             break
         else:
-            print("❌ Hibás választás!")
+            print(" Hibás választás!")
 
 
 if __name__ == "__main__":
